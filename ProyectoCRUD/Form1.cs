@@ -65,5 +65,19 @@ namespace ProyectoCRUD
         {
             this.dataGridView1.DataSource = Academico.EstudianteDAO.getDatos();
         }
+
+        private void nuevo_Click(object sender, EventArgs e)
+        {
+            this.matricula.Text = "";
+            this.nombre.Text = "";
+            this.apellidos.Text = "";
+            this.correo.Text = "";
+        }
+
+        private void cerrar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Gracias por visitar...  "+ " Tenga buen dia :) ");
+            this.Close();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Academico
 {
     public static class EstudianteDAO
     {
-        public static string cadenaConexion = @"server=A-SIS-044\SVRSQL2016; database=TI2019; user id=sa; password=lab123456";
+        public static string cadenaConexion = @"server=LABORATORIO2\SQLEXPRESS2017; database=TI2019; user id=sa; password=lab123456";
         public static int guardar(Estudiante estudiante)
         {
             //primer paso: creamos la cadena de conexion
@@ -47,7 +47,7 @@ namespace Academico
         public static DataTable getDatos()
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = "select matricula,apellidos,nombres,genero" +
+            string sql = "select matricula,apellidos,nombres,genero," +
                 "fechaNacimiento,email from estudiantes order by apellidos";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();

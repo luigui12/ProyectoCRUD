@@ -160,6 +160,7 @@
             this.nuevo.TabIndex = 14;
             this.nuevo.Text = "Nuevo";
             this.nuevo.UseVisualStyleBackColor = true;
+            this.nuevo.Click += new System.EventHandler(this.nuevo_Click);
             // 
             // cerrar
             // 
@@ -169,6 +170,7 @@
             this.cerrar.TabIndex = 15;
             this.cerrar.Text = "Cerrar";
             this.cerrar.UseVisualStyleBackColor = true;
+            this.cerrar.Click += new System.EventHandler(this.cerrar_Click);
             // 
             // dataGridView1
             // 
@@ -183,6 +185,7 @@
             // 
             // nacimiento
             // 
+            this.nacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.nacimiento.Location = new System.Drawing.Point(186, 173);
             this.nacimiento.Name = "nacimiento";
             this.nacimiento.Size = new System.Drawing.Size(100, 20);
