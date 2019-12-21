@@ -43,13 +43,47 @@ namespace Academico
             return x;
         }
 
-        //conjunto de filas y columnas que trae datos
+        /// <summary>
+        /// Devuelve todas la tabla estudiantes 
+        /// </summary>
+        /// <returns></returns>
         public static DataTable getDatos()
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula,apellidos,nombres,genero," +
                 "fechaNacimiento,email from estudiantes order by apellidos";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+
+            return dt;
+        }
+
+        public static DataTable getNombreCompletos()
+        {
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+            string sql = "select matricula, upper (apellidos + ' ' + nombres) as Estudiante,genero," +
+                "fechaNacimiento,email from estudiantes order by apellidos,nombres";
+            SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+
+            return dt;
+        }
+        /// <summary>
+        /// Obtiene un estudiante por su numero de matricula
+        /// </summary>
+        /// <param name="matricula"></param>
+        /// <returns></returns>
+        public static DataTable getDatos(String matricula)
+        {
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+            string sql = "select matricula,apellidos,nombres,genero," +
+                "fechaNacimiento,email from estudiantes"+
+                "where matricula=@matricula"+
+                "order by apellidos,nombres";
+            SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
+            ad.SelectCommand.Parameters.AddWithValue("@matricula",matricula);
             DataTable dt = new DataTable();
             ad.Fill(dt);
 
