@@ -58,7 +58,10 @@ namespace Academico
 
             return dt;
         }
-
+        /// <summary>
+        /// obtiene el apellido y nombre de un estudiante mediante la matricula
+        /// </summary>
+        /// <returns></returns>
         public static DataTable getNombreCompletos()
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
@@ -88,6 +91,34 @@ namespace Academico
             ad.Fill(dt);
 
             return dt;
+        }
+
+        public static int eliminar(Estudiante matricula)
+        {
+            
+            //segundo paso: definimos un objeto conexión
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+
+            //tercer paso: creamos la cadena de la tabla
+            string sql = "delete from estudiantes where matricula=@matricula";
+
+            //definimos un comando
+            SqlCommand comando = new SqlCommand(sql, conn);
+
+            //configuramos los parámetros
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.Parameters.AddWithValue("@matricula",matricula.Matricula);
+
+            //abrimos conexion
+            conn.Open();
+
+            //ejecutamos el comando
+            int x = comando.ExecuteNonQuery();
+
+            //cerrmos conexion
+            conn.Close();
+
+            return x;
         }
     }
 }

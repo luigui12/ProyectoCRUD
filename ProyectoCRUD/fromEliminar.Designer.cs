@@ -1,6 +1,6 @@
 ﻿namespace ProyectoCRUD
 {
-    partial class FromBuscar
+    partial class fromEliminar
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbMatricula = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.buscar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbMatricula = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nacimiento = new System.Windows.Forms.TextBox();
             this.correo = new System.Windows.Forms.TextBox();
             this.cmbgenero = new System.Windows.Forms.ComboBox();
             this.nombre = new System.Windows.Forms.TextBox();
@@ -41,40 +42,38 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.nacimiento = new System.Windows.Forms.TextBox();
+            this.eliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // buscar
+            // 
+            this.buscar.Location = new System.Drawing.Point(349, 43);
+            this.buscar.Name = "buscar";
+            this.buscar.Size = new System.Drawing.Size(75, 23);
+            this.buscar.TabIndex = 5;
+            this.buscar.Text = "Buscar";
+            this.buscar.UseVisualStyleBackColor = true;
+            this.buscar.Click += new System.EventHandler(this.buscar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(57, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Seleccion de estudiantes: ";
             // 
             // cmbMatricula
             // 
             this.cmbMatricula.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbMatricula.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMatricula.FormattingEnabled = true;
-            this.cmbMatricula.Location = new System.Drawing.Point(181, 53);
+            this.cmbMatricula.Location = new System.Drawing.Point(204, 43);
             this.cmbMatricula.Name = "cmbMatricula";
             this.cmbMatricula.Size = new System.Drawing.Size(121, 21);
-            this.cmbMatricula.TabIndex = 0;
-            this.cmbMatricula.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Seleccion de estudiantes: ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // buscar
-            // 
-            this.buscar.Location = new System.Drawing.Point(347, 53);
-            this.buscar.Name = "buscar";
-            this.buscar.Size = new System.Drawing.Size(75, 23);
-            this.buscar.TabIndex = 2;
-            this.buscar.Text = "Buscar";
-            this.buscar.UseVisualStyleBackColor = true;
-            this.buscar.Click += new System.EventHandler(this.buscar_Click);
+            this.cmbMatricula.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -88,12 +87,20 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(24, 91);
+            this.groupBox1.Location = new System.Drawing.Point(23, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(422, 232);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.Size = new System.Drawing.Size(491, 232);
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // nacimiento
+            // 
+            this.nacimiento.Location = new System.Drawing.Point(142, 147);
+            this.nacimiento.Name = "nacimiento";
+            this.nacimiento.ReadOnly = true;
+            this.nacimiento.Size = new System.Drawing.Size(107, 20);
+            this.nacimiento.TabIndex = 27;
             // 
             // correo
             // 
@@ -102,7 +109,6 @@
             this.correo.ReadOnly = true;
             this.correo.Size = new System.Drawing.Size(247, 20);
             this.correo.TabIndex = 26;
-            this.correo.TextChanged += new System.EventHandler(this.correo_TextChanged);
             // 
             // cmbgenero
             // 
@@ -176,26 +182,29 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Apellidos :";
             // 
-            // nacimiento
+            // eliminar
             // 
-            this.nacimiento.Location = new System.Drawing.Point(142, 147);
-            this.nacimiento.Name = "nacimiento";
-            this.nacimiento.ReadOnly = true;
-            this.nacimiento.Size = new System.Drawing.Size(107, 20);
-            this.nacimiento.TabIndex = 27;
+            this.eliminar.Location = new System.Drawing.Point(431, 43);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(83, 24);
+            this.eliminar.TabIndex = 7;
+            this.eliminar.Text = "Eliminar";
+            this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
-            // FromBuscar
+            // fromEliminar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 340);
+            this.ClientSize = new System.Drawing.Size(531, 336);
+            this.Controls.Add(this.eliminar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbMatricula);
-            this.Name = "FromBuscar";
-            this.Text = "FromEliminar";
-            this.Load += new System.EventHandler(this.FromEliminar_Load);
+            this.Name = "fromEliminar";
+            this.Text = "fromEliminar";
+            this.Load += new System.EventHandler(this.fromEliminar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -205,10 +214,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmbMatricula;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buscar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbMatricula;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox nacimiento;
         private System.Windows.Forms.TextBox correo;
         private System.Windows.Forms.ComboBox cmbgenero;
         private System.Windows.Forms.TextBox nombre;
@@ -218,6 +228,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox nacimiento;
+        private System.Windows.Forms.Button eliminar;
     }
 }

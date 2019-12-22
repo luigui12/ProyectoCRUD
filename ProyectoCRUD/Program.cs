@@ -16,7 +16,7 @@ namespace ProyectoCRUD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FromBuscar());
+            Application.Run(new fromEliminar());
         }
     }
 }
