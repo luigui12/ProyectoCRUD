@@ -39,6 +39,17 @@ namespace ProyectoCRUD
             estudiante.FechaNacimiento = this.nacimiento.Value;
             estudiante.Correo = this.correo.Text;
             string genero = "F";
+            //VALIDAR MENSAJE
+            if (Academico.EstudianteDAO.validarEmail(this.correo.Text) == false)
+            {
+                MessageBox.Show("El Email Ingresado no se encuentra en el Formato Correcto",
+                                    "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                estudiante.Correo = this.correo.Text;
+            }
+
             if (this.cmbgenero.Text.ToString().Equals("Masculino"))
             {
                 genero = "M";

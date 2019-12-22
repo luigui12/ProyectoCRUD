@@ -4,13 +4,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Academico
 {
     public static class EstudianteDAO
     {
-        public static string cadenaConexion = @"server=LABORATORIO2\SQLEXPRESS2017; database=TI2019; user id=sa; password=lab123456";
+        public static string cadenaConexion = @"server=DESKTOP-A6URQU3\SQLEXPRESS2016; database=TI2019; user id=sa; password=Lab123456";
         public static int guardar(Estudiante estudiante)
         {
             //primer paso: creamos la cadena de conexion
@@ -43,11 +44,34 @@ namespace Academico
             return x;
         }
 
-        /// <summary>
-        /// Devuelve todas la tabla estudiantes 
-        /// </summary>
-        /// <returns></returns>
-        public static DataTable getDatos()
+        public static bool validarEmail(string email)
+        {
+            String expresion;
+            expresion = @"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9 -]+)*(\.[a-z]{2,4})$";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                { 
+                    return true;
+                }
+                else
+                { 
+                    return false; 
+                }
+
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+            /// <summary>
+            /// Devuelve todas la tabla estudiantes 
+            /// </summary>
+            /// <returns></returns>
+            public static DataTable getDatos()
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula,apellidos,nombres,genero," +
@@ -65,8 +89,8 @@ namespace Academico
         public static DataTable getNombreCompletos()
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = "select matricula, upper (apellidos + ' ' + nombres) as Estudiante,genero," +
-                "fechaNacimiento,email from estudiantes order by apellidos,nombres";
+            string sql = "select matricula, upper (apellidos + ' ' + nombres) as Estudiante " +
+                " from estudiantes order by apellidos,nombres";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             ad.Fill(dt);
@@ -82,8 +106,8 @@ namespace Academico
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula,apellidos,nombres,genero," +
-                "fechaNacimiento,email from estudiantes"+
-                "where matricula=@matricula"+
+                "fechaNacimiento,email from estudiantes "+
+                "where matricula = @matricula "+
                 "order by apellidos,nombres";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             ad.SelectCommand.Parameters.AddWithValue("@matricula",matricula);
@@ -93,7 +117,7 @@ namespace Academico
             return dt;
         }
 
-        public static int eliminar(Estudiante matricula)
+        public static int eliminar(string matricula)
         {
             
             //segundo paso: definimos un objeto conexión
@@ -107,7 +131,7 @@ namespace Academico
 
             //configuramos los parámetros
             comando.CommandType = System.Data.CommandType.Text;
-            comando.Parameters.AddWithValue("@matricula",matricula.Matricula);
+            comando.Parameters.AddWithValue("@matricula",matricula);
 
             //abrimos conexion
             conn.Open();

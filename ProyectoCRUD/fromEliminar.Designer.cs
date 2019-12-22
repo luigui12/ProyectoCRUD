@@ -34,7 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nacimiento = new System.Windows.Forms.TextBox();
             this.correo = new System.Windows.Forms.TextBox();
-            this.cmbgenero = new System.Windows.Forms.ComboBox();
             this.nombre = new System.Windows.Forms.TextBox();
             this.apellidos = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.eliminar = new System.Windows.Forms.Button();
+            this.cmbgenero = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,9 +77,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbgenero);
             this.groupBox1.Controls.Add(this.nacimiento);
             this.groupBox1.Controls.Add(this.correo);
-            this.groupBox1.Controls.Add(this.cmbgenero);
             this.groupBox1.Controls.Add(this.nombre);
             this.groupBox1.Controls.Add(this.apellidos);
             this.groupBox1.Controls.Add(this.label6);
@@ -109,17 +109,6 @@
             this.correo.ReadOnly = true;
             this.correo.Size = new System.Drawing.Size(247, 20);
             this.correo.TabIndex = 26;
-            // 
-            // cmbgenero
-            // 
-            this.cmbgenero.FormattingEnabled = true;
-            this.cmbgenero.Items.AddRange(new object[] {
-            "Masculino",
-            "Femenino"});
-            this.cmbgenero.Location = new System.Drawing.Point(140, 113);
-            this.cmbgenero.Name = "cmbgenero";
-            this.cmbgenero.Size = new System.Drawing.Size(100, 21);
-            this.cmbgenero.TabIndex = 25;
             // 
             // nombre
             // 
@@ -192,6 +181,14 @@
             this.eliminar.UseVisualStyleBackColor = true;
             this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
+            // cmbgenero
+            // 
+            this.cmbgenero.Location = new System.Drawing.Point(140, 110);
+            this.cmbgenero.Name = "cmbgenero";
+            this.cmbgenero.ReadOnly = true;
+            this.cmbgenero.Size = new System.Drawing.Size(100, 20);
+            this.cmbgenero.TabIndex = 28;
+            // 
             // fromEliminar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,7 +217,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox nacimiento;
         private System.Windows.Forms.TextBox correo;
-        private System.Windows.Forms.ComboBox cmbgenero;
         private System.Windows.Forms.TextBox nombre;
         private System.Windows.Forms.TextBox apellidos;
         private System.Windows.Forms.Label label6;
@@ -229,5 +225,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.TextBox cmbgenero;
     }
 }

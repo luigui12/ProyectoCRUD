@@ -39,16 +39,18 @@ namespace ProyectoCRUD
 
         private void eliminar_Click(object sender, EventArgs e)
         {
-            int x = 0;
-            Academico.Estudiante matricula= new Academico.Estudiante();
-         
-            if (MessageBox.Show("¿Estas seguro de eliminar registro de este estudiante?", "eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                Academico.EstudianteDAO.eliminar(matricula);
-            }
-            else
-            {
 
+            if (MessageBox.Show("¿Estas seguro de eliminar registro de este estudiante?"
+                , "eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                int x=Academico.EstudianteDAO.eliminar(this.cmbMatricula.SelectedValue.ToString());
+                this.apellidos.Clear();
+                this.nombre.Clear();
+                this.cmbgenero.Clear();
+                this.nacimiento.Clear();
+                this.correo.Clear();
+                DataTable dt = Academico.EstudianteDAO.getNombreCompletos();
+                this.cmbMatricula.DataSource = dt;
             }
         }
 
