@@ -49,7 +49,7 @@ namespace ProyectoCRUD
             {
                 estudiante.Correo = this.correo.Text;
             }
-
+            //GENERO
             if (this.cmbgenero.Text.ToString().Equals("Masculino"))
             {
                 genero = "M";
