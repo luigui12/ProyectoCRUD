@@ -59,5 +59,10 @@ namespace ProyectoCRUD
                 MessageBox.Show("EL estudiante no existe...");
             }
         }
+
+        private void apellidos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

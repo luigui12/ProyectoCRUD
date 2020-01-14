@@ -19,7 +19,42 @@ namespace ProyectoCRUD
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
+            int x = 0;
+            //creamos instancia de la clase Estudiante
+            Academico.Estudiante estudiante = new Academico.Estudiante();
+            //pasamos los valores de la cajas de texto a cada items
+            estudiante.Matricula = Convert.ToString(this.cmbMatricula.SelectedValue);
+            estudiante.Apellidos = this.apellidos.Text;
+            estudiante.Nombres = this.nombre.Text;
+            estudiante.FechaNacimiento = this.nacimiento.Value;
+            string genero = "F";
+            //VALIDAR MENSAJE
+            if (Academico.EstudianteDAO.validarEmail(this.correo.Text) == false)
+            {
+                MessageBox.Show("El Email Ingresado no se encuentra en el Formato Correcto",
+                                    "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                estudiante.Correo = this.correo.Text;
+            }
+            //GENERO
+            if (this.cmbgenero.Text.ToString().Equals("Masculino"))
+            {
+                genero = "M";
+            }
+            estudiante.Genero = genero;
+            //REALIZA EL PROCESO QUE LE ASIGNEMOS Y DEVUELVE ALGUN POSIBLE ERROR
+            try
+            {
+                x = Academico.EstudianteDAO.actualizar(estudiante);
+               
+                MessageBox.Show("Actualizacion Realizada con exito...! :" + x.ToString());
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message.ToString());
+            }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -76,8 +111,6 @@ namespace ProyectoCRUD
             {
                 buscar1();
             }
-           
-            
         }
     }
 }

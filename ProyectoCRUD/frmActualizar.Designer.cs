@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmActualizar));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nacimiento = new System.Windows.Forms.TextBox();
             this.correo = new System.Windows.Forms.TextBox();
             this.cmbgenero = new System.Windows.Forms.ComboBox();
             this.nombre = new System.Windows.Forms.TextBox();
@@ -46,6 +45,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.nacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,19 +69,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // nacimiento
-            // 
-            this.nacimiento.Location = new System.Drawing.Point(142, 147);
-            this.nacimiento.Name = "nacimiento";
-            this.nacimiento.ReadOnly = true;
-            this.nacimiento.Size = new System.Drawing.Size(107, 20);
-            this.nacimiento.TabIndex = 27;
-            // 
             // correo
             // 
             this.correo.Location = new System.Drawing.Point(140, 182);
             this.correo.Name = "correo";
-            this.correo.ReadOnly = true;
             this.correo.Size = new System.Drawing.Size(247, 20);
             this.correo.TabIndex = 26;
             // 
@@ -100,7 +91,6 @@
             // 
             this.nombre.Location = new System.Drawing.Point(140, 72);
             this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
             this.nombre.Size = new System.Drawing.Size(100, 20);
             this.nombre.TabIndex = 24;
             // 
@@ -108,7 +98,6 @@
             // 
             this.apellidos.Location = new System.Drawing.Point(140, 31);
             this.apellidos.Name = "apellidos";
-            this.apellidos.ReadOnly = true;
             this.apellidos.Size = new System.Drawing.Size(100, 20);
             this.apellidos.TabIndex = 23;
             // 
@@ -217,6 +206,13 @@
             this.toolStripButton2.Text = "Cerrar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // nacimiento
+            // 
+            this.nacimiento.Location = new System.Drawing.Point(140, 147);
+            this.nacimiento.Name = "nacimiento";
+            this.nacimiento.Size = new System.Drawing.Size(138, 20);
+            this.nacimiento.TabIndex = 27;
+            // 
             // frmActualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,7 +238,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nacimiento;
         private System.Windows.Forms.TextBox correo;
         private System.Windows.Forms.ComboBox cmbgenero;
         private System.Windows.Forms.TextBox nombre;
@@ -258,5 +253,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.DateTimePicker nacimiento;
     }
 }

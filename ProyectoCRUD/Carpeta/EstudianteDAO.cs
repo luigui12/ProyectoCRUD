@@ -11,18 +11,16 @@ namespace Academico
 {
     public static class EstudianteDAO
     {
-        public static string cadenaConexion = @"server=L-PCT-103\SQLEXPRESS2016; database=TI2019; user id=sa; password=Lab123456";
+       
+        public static string cadenaConexion = @"server=LABORATORIO2\SQLEXPRESS2016; database=TI2019; user id=sa; password=lab123456";
         public static int guardar(Estudiante estudiante)
         {
-            //primer paso: creamos la cadena de conexion
-            //string cadenaConexion = @"server=A-SIS-044\SVRSQL2016; database=TI2019; user id=sa; password=lab123456";
-            
             
             //segundo paso: definimos un objeto conexión
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            
+                
             //tercer paso: creamos la cadena de la tabla
-            string sql = "insert into estudiantes(matricula,apellidos,nombres,genero," +
+            string sql = "insert into Estudiantes(matricula,apellidos,nombres,genero," +
                 "fechaNacimiento,email) values(@matricula,@apellidos,@nombres,@genero," +
                 "@fechaNacimiento,@email) ";
 
@@ -75,7 +73,7 @@ namespace Academico
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula,apellidos,nombres,genero," +
-                "fechaNacimiento,email from estudiantes order by apellidos";
+                "fechaNacimiento,email from Estudiantes order by apellidos";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             ad.Fill(dt);
@@ -90,7 +88,7 @@ namespace Academico
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula, upper (apellidos + ' ' + nombres) as Estudiante " +
-                " from estudiantes order by apellidos,nombres";
+                " from Estudiantes order by apellidos,nombres";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             ad.Fill(dt);
@@ -106,7 +104,7 @@ namespace Academico
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula,apellidos,nombres,genero," +
-                "fechaNacimiento,email from estudiantes "+
+                "fechaNacimiento,email from Estudiantes "+
                 "where matricula = @matricula "+
                 "order by apellidos,nombres";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
@@ -116,6 +114,12 @@ namespace Academico
 
             return dt;
         }
+
+        /// <summary>
+        /// Eliminar
+        /// </summary>
+        /// <param name="matricula"></param>
+        /// <returns></returns>
 
         public static int eliminar(string matricula)
         {
@@ -140,6 +144,33 @@ namespace Academico
             int x = comando.ExecuteNonQuery();
 
             //cerrmos conexion
+            conn.Close();
+
+            return x;
+        }
+
+        public static int actualizar(Estudiante estudiante)
+        {
+            //segundo paso: definimos un objeto conexión
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+
+            //tercer paso: creamos la cadena de la tabla
+            string sql = "UPDATE Estudiantes SET apellidos=@apellidos,nombres=@nombres,genero=@genero," +
+                "fechaNacimiento=@fechaNacimiento,email=@email WHERE matricula=@matricula";
+
+            //definimos un comando
+            SqlCommand comando = new SqlCommand(sql, conn);
+
+            //configuramos los parámetros
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.Parameters.AddWithValue("@matricula", estudiante.Matricula);
+            comando.Parameters.AddWithValue("@apellidos", estudiante.Apellidos);
+            comando.Parameters.AddWithValue("@nombres", estudiante.Nombres);
+            comando.Parameters.AddWithValue("@genero", estudiante.Genero);
+            comando.Parameters.AddWithValue("@fechaNacimiento", estudiante.FechaNacimiento.Date);
+            comando.Parameters.AddWithValue("@email", estudiante.Correo);
+            conn.Open();
+            int x = comando.ExecuteNonQuery(); //ejecutamos el comando
             conn.Close();
 
             return x;

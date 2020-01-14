@@ -138,6 +138,7 @@
             this.apellidos.ReadOnly = true;
             this.apellidos.Size = new System.Drawing.Size(100, 20);
             this.apellidos.TabIndex = 23;
+            this.apellidos.TextChanged += new System.EventHandler(this.apellidos_TextChanged);
             // 
             // label6
             // 
