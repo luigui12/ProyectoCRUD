@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Carpeta\Estudiante.cs" />
     <Compile Include="Carpeta\EstudianteDAO.cs" />
+    <Compile Include="Carpeta\Usuario.cs" />
+    <Compile Include="Carpeta\UsuarioDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

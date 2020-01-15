@@ -12,7 +12,7 @@ namespace Academico
     public static class EstudianteDAO
     {
        
-        public static string cadenaConexion = @"server=LABORATORIO2\SQLEXPRESS2016; database=TI2019; user id=sa; password=lab123456";
+        public static string cadenaConexion = @"server=L-PCT-103\SQLEXPRESS2016; database=TI2019; user id=sa; password=Lab123456";
         public static int guardar(Estudiante estudiante)
         {
             
