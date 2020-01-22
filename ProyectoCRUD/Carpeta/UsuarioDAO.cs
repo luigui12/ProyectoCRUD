@@ -1,40 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logeo
+namespace Academico
 {
     public static class UsuarioDAO
     {
         public static string cadenaConexion = @"server=L-PCT-103\SQLEXPRESS2016; database=TI2019; user id=sa; password=Lab123456";
-        public static int guardar(Usuario usuario)
+        public static bool validaUsuario(String usuario, String clave )
         {
 
-            //segundo paso: definimos un objeto conexión
             SqlConnection conn = new SqlConnection(cadenaConexion);
+            string sql = "select login,clave from usuarios " +
+               " where login = @login and clave = @clave ";
 
-            //tercer paso: creamos la cadena de la tabla
-            string sql = "insert into usuario (matricula,apellidos,nombres,genero," +
-                "fechaNacimiento,email) values(@matricula,@apellidos,@nombres,@genero," +
-                "@fechaNacimiento,@email) ";
+            SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
 
-            //definimos un comando
-            SqlCommand comando = new SqlCommand(sql, conn);
+            ad.SelectCommand.Parameters.AddWithValue("@login", usuario);
+            ad.SelectCommand.Parameters.AddWithValue("@clave", clave);
 
-            //configuramos los parámetros
-            comando.CommandType = System.Data.CommandType.Text;
-            comando.Parameters.AddWithValue("@nombreCompleto", usuario.idLogin);
-            comando.Parameters.AddWithValue("@apellidos", usuario.nombreCompleto);
-            comando.Parameters.AddWithValue("@nombres", usuario.login);
-            comando.Parameters.AddWithValue("@clave", usuario.clave);
-            conn.Open();
-            int x = comando.ExecuteNonQuery(); //ejecutamos el comando
-            conn.Close();
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
 
-            return x;
+            if (dt.Rows.Count>0)
+            {
+                return true;
+            }
+            return false;
         }
 
     }
