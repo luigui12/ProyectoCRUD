@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmActualizar));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nacimiento = new System.Windows.Forms.DateTimePicker();
             this.correo = new System.Windows.Forms.TextBox();
             this.cmbgenero = new System.Windows.Forms.ComboBox();
             this.nombre = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.nacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +68,13 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // nacimiento
+            // 
+            this.nacimiento.Location = new System.Drawing.Point(140, 147);
+            this.nacimiento.Name = "nacimiento";
+            this.nacimiento.Size = new System.Drawing.Size(138, 20);
+            this.nacimiento.TabIndex = 27;
             // 
             // correo
             // 
@@ -205,13 +212,6 @@
             this.toolStripButton2.Size = new System.Drawing.Size(59, 22);
             this.toolStripButton2.Text = "Cerrar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // nacimiento
-            // 
-            this.nacimiento.Location = new System.Drawing.Point(140, 147);
-            this.nacimiento.Name = "nacimiento";
-            this.nacimiento.Size = new System.Drawing.Size(138, 20);
-            this.nacimiento.TabIndex = 27;
             // 
             // frmActualizar
             // 

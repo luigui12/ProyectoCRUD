@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adm\Frmusuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adm\Frmusuario.Designer.cs">
+      <DependentUpon>Frmusuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Carpeta\Estudiante.cs" />
     <Compile Include="Carpeta\EstudianteDAO.cs" />
     <Compile Include="Carpeta\Usuario.cs" />
@@ -88,6 +94,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Adm\Frmusuario.resx">
+      <DependentUpon>Frmusuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +146,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\usuario %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disco-flexible.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
