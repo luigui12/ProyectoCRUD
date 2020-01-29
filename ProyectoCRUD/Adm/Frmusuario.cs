@@ -24,8 +24,12 @@ namespace ProyectoCRUD.Adm
 
         private void Frmusuario_Load(object sender, EventArgs e)
         {
-            encerar();
+            DataGridViewButtonColumn btnseleccionar = new DataGridViewButtonColumn();
+            btnseleccionar.Name = "Seleccionar";
+
+            dtusuario.Columns.Add(btnseleccionar);
             cargarGridUsuario();
+            encerar();
         }
         private void cargarGridUsuario()
         {
@@ -77,7 +81,7 @@ namespace ProyectoCRUD.Adm
             Academico.Usuario usuario = new Academico.Usuario();
             //pasamos los valores de la cajas de texto a cada items
             usuario.nombreCompleto = this.nombre.Text;
-            usuario.login = this.login.Text;
+            usuario.loguin = this.login.Text;
             usuario.clave = this.clave.Text;
             usuario.tipoUsuario = this.tiposusu.Text;
 
@@ -93,5 +97,44 @@ namespace ProyectoCRUD.Adm
                 MessageBox.Show("No se puede agregar el Usuario");
             }
         }
+        // para crear el botón dentro del Datagridview//
+        void origendatos()
+        {
+            dtusuario.DataSource = Academico.UsuarioDAO.getDatos();
+            dtusuario.Columns["imagen"].Visible = false;
+        }
+
+        private void dtusuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void dtusuario_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dtusuario.Columns[e.ColumnIndex].Name == "Seleccionar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell celboton = this.dtusuario.Rows[e.RowIndex].Cells["Seleccionar"] as DataGridViewButtonCell;
+                Icon icoSeleccionar = new Icon(Environment.CurrentDirectory + @"\\seleccion.ico");
+                e.Graphics.DrawIcon(icoSeleccionar, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dtusuario.Rows[e.RowIndex].Height = icoSeleccionar.Height + 5;
+                this.dtusuario.Columns[e.ColumnIndex].Width = icoSeleccionar.Width + 8;
+
+                e.Handled = true;
+            }
+        }
+        private void dtusuario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dtusuario.Columns[e.ColumnIndex].Name == "Seleccionar")
+            {
+
+                id.Text = dtusuario.CurrentRow.Cells[1].Value.ToString();
+                nombre.Text = dtusuario.CurrentRow.Cells[2].Value.ToString();
+                login.Text = dtusuario.CurrentRow.Cells[3].Value.ToString();
+                clave.Text = dtusuario.CurrentRow.Cells[4].Value.ToString();
+                tiposusu.Text = dtusuario.CurrentRow.Cells[5].Value.ToString();
+            }
+        }
+
     }
 }

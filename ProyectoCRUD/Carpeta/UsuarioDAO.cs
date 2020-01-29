@@ -10,7 +10,7 @@ namespace Academico
 {
     public static class UsuarioDAO
     {
-        public static string cadenaConexion = @"server=L-PCT-103\SQLEXPRESS2016; database=TI2019; user id=sa; password=Lab123456";
+        public static string cadenaConexion = @"server=LABORATORIO2\SQLEXPRESS2016; database=TI2019; user id=sa; password=lab123456;";
         /// <summary>
         /// Guardar
         /// </summary>
@@ -23,8 +23,8 @@ namespace Academico
             SqlConnection conn = new SqlConnection(cadenaConexion);
 
             //tercer paso: creamos la cadena de la tabla
-            string sql = "insert into usuarios (nombreCompleto,login,clave,tiposUsuario) " +
-                " values(@nombreCompleto,@login,@clave,@tiposUsuario) ";
+            string sql = "insert into usuarios (nombreCompleto,loguin,clave,tipoUsuario) " +
+                " values(@nombreCompleto,@loguin,@clave,@tipoUsuario) ";
 
             //definimos un comando
             SqlCommand comando = new SqlCommand(sql, conn);
@@ -32,9 +32,9 @@ namespace Academico
             //configuramos los parámetros
             comando.CommandType = System.Data.CommandType.Text;
             comando.Parameters.AddWithValue("@nombreCompleto", usuario.nombreCompleto);
-            comando.Parameters.AddWithValue("@login", usuario.login);
+            comando.Parameters.AddWithValue("@loguin", usuario.loguin);
             comando.Parameters.AddWithValue("@clave", usuario.clave);
-            comando.Parameters.AddWithValue("@tiposUsuario", usuario.tipoUsuario);
+            comando.Parameters.AddWithValue("@tipoUsuario", usuario.tipoUsuario);
             conn.Open();
             int x = comando.ExecuteNonQuery(); //ejecutamos el comando
             conn.Close();
@@ -48,7 +48,7 @@ namespace Academico
         public static DataTable getDatos()
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = "select idLogin,nombreCompleto,login,clave,tiposUsuario "+
+            string sql = "select idLogin,nombreCompleto,loguin,clave,tipoUsuario "+
                 " from usuarios order by nombreCompleto";
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
@@ -67,12 +67,12 @@ namespace Academico
         {
 
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = "select login,clave from usuarios " +
-               " where login = @login and clave = @clave ";
+            string sql = "select loguin,clave from usuarios " +
+               " where loguin = @loguin and clave = @clave ";
 
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
 
-            ad.SelectCommand.Parameters.AddWithValue("@login", usuario);
+            ad.SelectCommand.Parameters.AddWithValue("@loguin", usuario);
             ad.SelectCommand.Parameters.AddWithValue("@clave", clave);
 
             DataTable dt = new DataTable();
@@ -83,6 +83,28 @@ namespace Academico
                 return true;
             }
             return false;
+        }
+        /// <summary>
+        /// Eliminar
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        public static int eliminar(string usuario)
+        {
+
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+            string sql = "delete from usuarios where idLogin=@idLogin";
+
+            //Definimos un comando
+            SqlCommand comando = new SqlCommand(sql, conn);
+            //configuramos los parámetros
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.Parameters.AddWithValue("@idLogin", usuario);
+            conn.Open();
+            int x = comando.ExecuteNonQuery(); //Ejeutamos el comando
+            conn.Close();
+
+            return x;
         }
 
     }

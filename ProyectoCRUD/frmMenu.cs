@@ -118,5 +118,10 @@ namespace ProyectoCRUD
             frm1.MdiParent = this;
             frm1.Show();
         }
+
+        private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
