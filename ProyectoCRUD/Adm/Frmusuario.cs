@@ -98,16 +98,7 @@ namespace ProyectoCRUD.Adm
             }
         }
         // para crear el botón dentro del Datagridview//
-        void origendatos()
-        {
-            dtusuario.DataSource = Academico.UsuarioDAO.getDatos();
-            dtusuario.Columns["imagen"].Visible = false;
-        }
-
-        private void dtusuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
         private void dtusuario_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && this.dtusuario.Columns[e.ColumnIndex].Name == "Seleccionar" && e.RowIndex >= 0)
@@ -117,8 +108,8 @@ namespace ProyectoCRUD.Adm
                 Icon icoSeleccionar = new Icon(Environment.CurrentDirectory + @"\\seleccion.ico");
                 e.Graphics.DrawIcon(icoSeleccionar, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
 
-                this.dtusuario.Rows[e.RowIndex].Height = icoSeleccionar.Height + 5;
-                this.dtusuario.Columns[e.ColumnIndex].Width = icoSeleccionar.Width + 8;
+                this.dtusuario.Rows[e.RowIndex].Height = icoSeleccionar.Height + 10;
+                this.dtusuario.Columns[e.ColumnIndex].Width = icoSeleccionar.Width + 10;
 
                 e.Handled = true;
             }
@@ -136,5 +127,9 @@ namespace ProyectoCRUD.Adm
             }
         }
 
+        private void dtusuario_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            
+        }
     }
 }

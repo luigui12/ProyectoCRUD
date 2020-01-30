@@ -207,7 +207,8 @@
             this.dtusuario.ReadOnly = true;
             this.dtusuario.Size = new System.Drawing.Size(390, 101);
             this.dtusuario.TabIndex = 13;
-            this.dtusuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtusuario_CellContentClick);
+            this.dtusuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtusuario_CellClick);
+            this.dtusuario.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtusuario_CellPainting_1);
             // 
             // Frmusuario
             // 
