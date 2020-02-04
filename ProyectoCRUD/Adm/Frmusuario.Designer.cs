@@ -170,7 +170,7 @@
             this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(431, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(561, 25);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -188,6 +188,7 @@
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(66, 22);
             this.toolStripLabel2.Text = "Eliminar";
+            this.toolStripLabel2.Click += new System.EventHandler(this.toolStripLabel2_Click);
             // 
             // toolStripLabel3
             // 
@@ -205,7 +206,7 @@
             this.dtusuario.Location = new System.Drawing.Point(29, 198);
             this.dtusuario.Name = "dtusuario";
             this.dtusuario.ReadOnly = true;
-            this.dtusuario.Size = new System.Drawing.Size(390, 101);
+            this.dtusuario.Size = new System.Drawing.Size(520, 145);
             this.dtusuario.TabIndex = 13;
             this.dtusuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtusuario_CellClick);
             this.dtusuario.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtusuario_CellPainting_1);
@@ -214,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 318);
+            this.ClientSize = new System.Drawing.Size(561, 355);
             this.Controls.Add(this.dtusuario);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tiposusu);

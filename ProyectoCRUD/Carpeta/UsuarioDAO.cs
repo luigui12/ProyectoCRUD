@@ -93,13 +93,13 @@ namespace Academico
         {
 
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = "delete from usuarios where idLogin=@idLogin";
+            string sql = "delete from usuarios where loguin=@loguin";
 
             //Definimos un comando
             SqlCommand comando = new SqlCommand(sql, conn);
             //configuramos los parámetros
             comando.CommandType = System.Data.CommandType.Text;
-            comando.Parameters.AddWithValue("@idLogin", usuario);
+            comando.Parameters.AddWithValue("@loguin", usuario);
             conn.Open();
             int x = comando.ExecuteNonQuery(); //Ejeutamos el comando
             conn.Close();

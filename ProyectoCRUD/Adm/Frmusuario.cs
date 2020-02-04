@@ -27,7 +27,11 @@ namespace ProyectoCRUD.Adm
             DataGridViewButtonColumn btnseleccionar = new DataGridViewButtonColumn();
             btnseleccionar.Name = "Seleccionar";
 
+            DataGridViewButtonColumn btneliminar1 = new DataGridViewButtonColumn();
+            btneliminar1.Name = "Eliminar";
+
             dtusuario.Columns.Add(btnseleccionar);
+            dtusuario.Columns.Add(btneliminar1);
             cargarGridUsuario();
             encerar();
         }
@@ -113,23 +117,60 @@ namespace ProyectoCRUD.Adm
 
                 e.Handled = true;
             }
+
+            if (e.ColumnIndex >= 0 && this.dtusuario.Columns[e.ColumnIndex].Name == "Eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell celboton = this.dtusuario.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
+                Icon icoSeleccionar = new Icon(Environment.CurrentDirectory + @"\\seleccion2.ico");
+                e.Graphics.DrawIcon(icoSeleccionar, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dtusuario.Rows[e.RowIndex].Height = icoSeleccionar.Height + 10;
+                this.dtusuario.Columns[e.ColumnIndex].Width = icoSeleccionar.Width + 10;
+
+                e.Handled = true;
+            }
         }
         private void dtusuario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.dtusuario.Columns[e.ColumnIndex].Name == "Seleccionar")
             {
 
-                id.Text = dtusuario.CurrentRow.Cells[1].Value.ToString();
-                nombre.Text = dtusuario.CurrentRow.Cells[2].Value.ToString();
-                login.Text = dtusuario.CurrentRow.Cells[3].Value.ToString();
-                clave.Text = dtusuario.CurrentRow.Cells[4].Value.ToString();
-                tiposusu.Text = dtusuario.CurrentRow.Cells[5].Value.ToString();
+                id.Text = dtusuario.CurrentRow.Cells[2].Value.ToString();
+                nombre.Text = dtusuario.CurrentRow.Cells[3].Value.ToString();
+                login.Text = dtusuario.CurrentRow.Cells[4].Value.ToString();
+                clave.Text = dtusuario.CurrentRow.Cells[5].Value.ToString();
+                tiposusu.Text = dtusuario.CurrentRow.Cells[6].Value.ToString();
+                break();
             }
+            else { }
+
+
+            if (MessageBox.Show("¿Estas seguro de eliminar registro?"
+                 , "eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                int x = Academico.UsuarioDAO.eliminar(this.login.Text);
+
+                this.id.Clear();
+                this.nombre.Clear();
+                this.login.Clear();
+                this.clave.Clear();
+                //this.tiposusu.Clear();
+                DataTable dt = Academico.UsuarioDAO.getDatos();
+                cargarGridUsuario();
+            }
+            else { }
         }
 
         private void dtusuario_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
         {
             
         }
+
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
+    
 }

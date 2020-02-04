@@ -70,7 +70,7 @@ namespace Academico
             /// </summary>
             /// <returns></returns>
             public static DataTable getDatos()
-        {
+            {
             SqlConnection conn = new SqlConnection(cadenaConexion);
             string sql = "select matricula,apellidos,nombres,genero," +
                 "fechaNacimiento,email from Estudiantes order by apellidos";
@@ -79,7 +79,7 @@ namespace Academico
             ad.Fill(dt);
 
             return dt;
-        }
+            }
         /// <summary>
         /// obtiene el apellido y nombre de un estudiante mediante la matricula
         /// </summary>
