@@ -123,5 +123,12 @@ namespace ProyectoCRUD
         {
 
         }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Informes.frminformeEstudiantes infor = new Informes.frminformeEstudiantes();
+            infor.MdiParent = this;
+            infor.Show();
+        }
     }
 }
