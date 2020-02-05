@@ -10,7 +10,7 @@ namespace Academico
 {
     public static class UsuarioDAO
     {
-        public static string cadenaConexion = @"server=LABORATORIO2\SQLEXPRESS2016; database=TI2019; user id=sa; password=lab123456;";
+        public static string cadenaConexion = @"server=L-PCT-116\SQLEXPRESS2016; database=TI2019; user id=sa; password=Lab123456;";
         /// <summary>
         /// Guardar
         /// </summary>
@@ -100,6 +100,30 @@ namespace Academico
             //configuramos los parámetros
             comando.CommandType = System.Data.CommandType.Text;
             comando.Parameters.AddWithValue("@loguin", usuario);
+            conn.Open();
+            int x = comando.ExecuteNonQuery(); //Ejeutamos el comando
+            conn.Close();
+
+            return x;
+        }
+
+        public static int actualizar(Usuario usuarios)
+        {
+
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+            string sql = "UPDATE usuarios SET nombreCompleto=@nombreCompleto, loguin=@loguin," +
+                " clave=@clave,tipoUsuario=@tipoUsuario" +
+                " WHERE idLogin=@idLogin";
+
+            //Definimos un comando
+            SqlCommand comando = new SqlCommand(sql, conn);
+            //configuramos los parámetros
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.Parameters.AddWithValue("@idLogin", usuarios.idLogin);
+            comando.Parameters.AddWithValue("@nombreCompleto", usuarios.nombreCompleto);
+            comando.Parameters.AddWithValue("@loguin", usuarios.loguin);
+            comando.Parameters.AddWithValue("@clave", usuarios.clave);
+            comando.Parameters.AddWithValue("@tipoUsuario", usuarios.tipoUsuario);
             conn.Open();
             int x = comando.ExecuteNonQuery(); //Ejeutamos el comando
             conn.Close();

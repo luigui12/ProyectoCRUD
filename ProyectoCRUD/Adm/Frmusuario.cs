@@ -55,7 +55,7 @@ namespace ProyectoCRUD.Adm
         //Guardar Registro
         private void toolStripLabel1_Click_1(object sender, EventArgs e)
         {
-            int x = 0;
+           
             if (this.nombre.Text.Length==0)
             {
                 MessageBox.Show("Por favor ingresa el nombre completo...!!");
@@ -82,23 +82,46 @@ namespace ProyectoCRUD.Adm
 
             }
             //creamos instancia de la clase Estudiante
-            Academico.Usuario usuario = new Academico.Usuario();
-            //pasamos los valores de la cajas de texto a cada items
-            usuario.nombreCompleto = this.nombre.Text;
-            usuario.loguin = this.login.Text;
-            usuario.clave = this.clave.Text;
-            usuario.tipoUsuario = this.tiposusu.Text;
-
-            
-                x = Academico.UsuarioDAO.guardar(usuario);
-            if (x>0)
+            Academico.Usuario usuario = new Academico.Usuario(); //Creando instancia
+            int a = int.Parse(this.id.Text);
+            if (a > 0)
             {
-                cargarGridUsuario();
-                MessageBox.Show("Usuario Agregado con exito...!");
+                usuario.idLogin = a;
+                usuario.nombreCompleto = this.nombre.Text;
+                usuario.loguin = this.login.Text;
+                usuario.clave = this.clave.Text;
+                usuario.tipoUsuario = this.tiposusu.Text;
+                int x = Academico.UsuarioDAO.actualizar(usuario);
+                if (x > 0)
+                {
+                    MessageBox.Show("Usuario actualizado con éxito...");
+                    cargarGridUsuario();
+                    encerar();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar al usuario...");
+                }
             }
             else
             {
-                MessageBox.Show("No se puede agregar el Usuario");
+                usuario.nombreCompleto = this.nombre.Text;
+                usuario.loguin = this.login.Text;
+                usuario.clave = this.clave.Text;
+                usuario.tipoUsuario = this.tiposusu.Text;
+                int x = Academico.UsuarioDAO.guardar(usuario);
+                cargarGridUsuario();
+                if (x > 0)
+                {
+                    MessageBox.Show("Usuario guardado con éxito...");
+                    cargarGridUsuario(); 
+                    encerar();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar al usuario...");
+                }
+
             }
         }
         // para crear el botón dentro del Datagridview//
@@ -141,25 +164,28 @@ namespace ProyectoCRUD.Adm
                 login.Text = dtusuario.CurrentRow.Cells[4].Value.ToString();
                 clave.Text = dtusuario.CurrentRow.Cells[5].Value.ToString();
                 tiposusu.Text = dtusuario.CurrentRow.Cells[6].Value.ToString();
-                break();
+                
             }
             else { }
 
-
-            if (MessageBox.Show("¿Estas seguro de eliminar registro?"
-                 , "eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (this.dtusuario.Columns[e.ColumnIndex].Name == "Eliminar")
             {
-                int x = Academico.UsuarioDAO.eliminar(this.login.Text);
+                if (MessageBox.Show("¿Estas seguro de eliminar registro?"
+                 , "eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    int x = Academico.UsuarioDAO.eliminar(this.login.Text);
 
-                this.id.Clear();
-                this.nombre.Clear();
-                this.login.Clear();
-                this.clave.Clear();
-                //this.tiposusu.Clear();
-                DataTable dt = Academico.UsuarioDAO.getDatos();
-                cargarGridUsuario();
+                    this.id.Clear();
+                    this.nombre.Clear();
+                    this.login.Clear();
+                    this.clave.Clear();
+                    //this.tiposusu.Clear();
+                    DataTable dt = Academico.UsuarioDAO.getDatos();
+                    cargarGridUsuario();
+                    encerar();
+                }
+                else { }
             }
-            else { }
         }
 
         private void dtusuario_CellPainting_1(object sender, DataGridViewCellPaintingEventArgs e)
