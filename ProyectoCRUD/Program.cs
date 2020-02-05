@@ -16,7 +16,9 @@ namespace ProyectoCRUD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Adm.Frmusuario());
+            //Application.Run(new Login());
+            //Application.Run(new Adm.Frmusuario());
+            Application.Run(new Informes.frminformeEstudiantes());
         }
     }
 }

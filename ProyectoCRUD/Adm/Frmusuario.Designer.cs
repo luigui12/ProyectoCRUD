@@ -90,6 +90,7 @@
             this.clave.Location = new System.Drawing.Point(181, 121);
             this.clave.MaxLength = 30;
             this.clave.Name = "clave";
+            this.clave.PasswordChar = '°';
             this.clave.Size = new System.Drawing.Size(100, 20);
             this.clave.TabIndex = 4;
             // 
