@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +69,12 @@
     <Compile Include="Carpeta\EstudianteDAO.cs" />
     <Compile Include="Carpeta\Usuario.cs" />
     <Compile Include="Carpeta\UsuarioDAO.cs" />
+    <Compile Include="Datos Personales\Frmdatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Datos Personales\Frmdatos.Designer.cs">
+      <DependentUpon>Frmdatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ds\dsEstudiantes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +127,10 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Adm\Frmusuario.resx">
       <DependentUpon>Frmusuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Datos Personales\datosPersonales.rdlc" />
+    <EmbeddedResource Include="Datos Personales\Frmdatos.resx">
+      <DependentUpon>Frmdatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
