@@ -80,6 +80,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEstudiantes.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ds\dsNotas.cs">
+      <DependentUpon>dsNotas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ds\dsNotas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsNotas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +124,12 @@
     <Compile Include="Informes\frminformeEstudiantes.Designer.cs">
       <DependentUpon>frminformeEstudiantes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Informes\Seleccion_Estudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informes\Seleccion_Estudiantes.Designer.cs">
+      <DependentUpon>Seleccion_Estudiantes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +165,10 @@
       <DependentUpon>frminformeEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informes\prtEstudiantes.rdlc" />
+    <EmbeddedResource Include="Informes\rptRecordAcademico.rdlc" />
+    <EmbeddedResource Include="Informes\Seleccion_Estudiantes.resx">
+      <DependentUpon>Seleccion_Estudiantes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +192,17 @@
     </None>
     <None Include="ds\dsEstudiantes.xss">
       <DependentUpon>dsEstudiantes.xsd</DependentUpon>
+    </None>
+    <None Include="ds\dsNotas.xsc">
+      <DependentUpon>dsNotas.xsd</DependentUpon>
+    </None>
+    <None Include="ds\dsNotas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsNotas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ds\dsNotas.xss">
+      <DependentUpon>dsNotas.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

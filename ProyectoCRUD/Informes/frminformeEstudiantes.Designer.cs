@@ -29,41 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dsEstudiantes1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsEstudiantes1 = new ProyectoCRUD.ds.dsEstudiantes();
-            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.estudiantesTableAdapter1 = new ProyectoCRUD.ds.dsEstudiantesTableAdapters.EstudiantesTableAdapter();
-            this.dsEstudiantes1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEstudiantes1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEstudiantes1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEstudiantes1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // bindingSource2
+            // dsEstudiantes1BindingSource
             // 
-            this.bindingSource2.DataMember = "Estudiantes";
-            this.bindingSource2.DataSource = this.dsEstudiantes1;
+            this.dsEstudiantes1BindingSource.DataSource = this.dsEstudiantes1;
+            this.dsEstudiantes1BindingSource.Position = 0;
             // 
             // dsEstudiantes1
             // 
             this.dsEstudiantes1.DataSetName = "dsEstudiantes";
             this.dsEstudiantes1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer2
+            // bindingSource2
             // 
-            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.dsEstudiantes1BindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "ProyectoCRUD.Informes.prtEstudiantes.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer2.Name = "reportViewer2";
-            this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(834, 363);
-            this.reportViewer2.TabIndex = 0;
+            this.bindingSource2.DataMember = "Estudiantes";
+            this.bindingSource2.DataSource = this.dsEstudiantes1;
             // 
             // bindingSource1
             // 
@@ -74,21 +64,15 @@
             // 
             this.estudiantesTableAdapter1.ClearBeforeFill = true;
             // 
-            // dsEstudiantes1BindingSource
-            // 
-            this.dsEstudiantes1BindingSource.DataSource = this.dsEstudiantes1;
-            this.dsEstudiantes1BindingSource.Position = 0;
-            // 
             // frminformeEstudiantes
             // 
-            this.ClientSize = new System.Drawing.Size(834, 363);
-            this.Controls.Add(this.reportViewer2);
+            this.ClientSize = new System.Drawing.Size(458, 266);
             this.Name = "frminformeEstudiantes";
             this.Load += new System.EventHandler(this.frminformeEstudiantes_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsEstudiantes1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEstudiantes1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsEstudiantes1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
