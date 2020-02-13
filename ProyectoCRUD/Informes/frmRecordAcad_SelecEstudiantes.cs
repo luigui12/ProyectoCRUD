@@ -10,16 +10,25 @@ using System.Windows.Forms;
 
 namespace ProyectoCRUD.Informes
 {
-    public partial class Seleccion_Estudiantes : Form
+    public partial class frmRecordAcad_SelecEstudiantes : Form
     {
-        public Seleccion_Estudiantes()
+        public static String Matricula;
+
+        public frmRecordAcad_SelecEstudiantes()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (this.cmbMatricula.SelectedValue.ToString().Length == 0){
+                MessageBox.Show("Pro favor debe seleccionar un estudiante");
+                this.cmbMatricula.Focus();//ubicar enfoque en el combo matricula
+                return; //Abandonar la ejecucion
+            }
+            Matricula = this.cmbMatricula.SelectedValue.ToString();
+            Informes.frmRecordAcad_MostrarRecord2 frm1 = new Informes.frmRecordAcad_MostrarRecord2();
+            frm1.Show();
         }
 
         private void cerrar_Click(object sender, EventArgs e)
@@ -33,6 +42,11 @@ namespace ProyectoCRUD.Informes
             this.cmbMatricula.DataSource = dt;
             this.cmbMatricula.DisplayMember = "Estudiante";
             this.cmbMatricula.ValueMember = "Matricula";
+        }
+
+        private void cmbMatricula_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

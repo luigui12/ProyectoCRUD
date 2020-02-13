@@ -69,12 +69,6 @@
     <Compile Include="Carpeta\EstudianteDAO.cs" />
     <Compile Include="Carpeta\Usuario.cs" />
     <Compile Include="Carpeta\UsuarioDAO.cs" />
-    <Compile Include="Datos Personales\Frmdatos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Datos Personales\Frmdatos.Designer.cs">
-      <DependentUpon>Frmdatos.cs</DependentUpon>
-    </Compile>
     <Compile Include="ds\dsEstudiantes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,11 +118,17 @@
     <Compile Include="Informes\frminformeEstudiantes.Designer.cs">
       <DependentUpon>frminformeEstudiantes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Informes\Seleccion_Estudiantes.cs">
+    <Compile Include="Informes\frmRecordAcad_MostrarRecord2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Informes\Seleccion_Estudiantes.Designer.cs">
-      <DependentUpon>Seleccion_Estudiantes.cs</DependentUpon>
+    <Compile Include="Informes\frmRecordAcad_MostrarRecord2.Designer.cs">
+      <DependentUpon>frmRecordAcad_MostrarRecord2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\frmRecordAcad_SelecEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informes\frmRecordAcad_SelecEstudiantes.Designer.cs">
+      <DependentUpon>frmRecordAcad_SelecEstudiantes.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -143,9 +143,6 @@
       <DependentUpon>Frmusuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Datos Personales\datosPersonales.rdlc" />
-    <EmbeddedResource Include="Datos Personales\Frmdatos.resx">
-      <DependentUpon>Frmdatos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,10 +161,13 @@
     <EmbeddedResource Include="Informes\frminformeEstudiantes.resx">
       <DependentUpon>frminformeEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Informes\frmRecordAcad_MostrarRecord2.resx">
+      <DependentUpon>frmRecordAcad_MostrarRecord2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Informes\prtEstudiantes.rdlc" />
     <EmbeddedResource Include="Informes\rptRecordAcademico.rdlc" />
-    <EmbeddedResource Include="Informes\Seleccion_Estudiantes.resx">
-      <DependentUpon>Seleccion_Estudiantes.cs</DependentUpon>
+    <EmbeddedResource Include="Informes\frmRecordAcad_SelecEstudiantes.resx">
+      <DependentUpon>frmRecordAcad_SelecEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
